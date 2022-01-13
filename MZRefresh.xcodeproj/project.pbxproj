@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A70E7BA278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */; };
+		6A70E7BC278FB1F8009CDDE4 /* MZRefreshDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */; };
+		6A70E7BE27900609009CDDE4 /* TableViewRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7BD27900608009CDDE4 /* TableViewRefreshController.swift */; };
+		6A70E7C0279006C6009CDDE4 /* CollectionViewRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7BF279006C6009CDDE4 /* CollectionViewRefreshController.swift */; };
+		6A70E7C2279006E0009CDDE4 /* RefreshTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7C1279006E0009CDDE4 /* RefreshTypeController.swift */; };
+		6A70E7C427901920009CDDE4 /* RefreshTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7C327901920009CDDE4 /* RefreshTypeCell.swift */; };
+		6AB57164278C1C0F0054943C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57163278C1C0F0054943C /* AppDelegate.swift */; };
+		6AB57168278C1C0F0054943C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57167278C1C0F0054943C /* ViewController.swift */; };
+		6AB5716B278C1C0F0054943C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB57169278C1C0F0054943C /* Main.storyboard */; };
+		6AB5716D278C1C160054943C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB5716C278C1C160054943C /* Assets.xcassets */; };
+		6AB57170278C1C160054943C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB5716E278C1C160054943C /* LaunchScreen.storyboard */; };
+		6AB5717C278D12250054943C /* NormalRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5717B278D12250054943C /* NormalRefreshController.swift */; };
+		6AB5717F278D4F240054943C /* MZRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5717E278D4F240054943C /* MZRefreshComponent.swift */; };
+		6AB57181278D53040054943C /* MZRefreshNormalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */; };
+		6AB57183278D53380054943C /* MZRefreshNormalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */; };
+		6AB57185278D5B440054943C /* MZRefresh.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB57184278D5B440054943C /* MZRefresh.xcassets */; };
+		86ADE7D583058A08F8D03405 /* Pods_MZRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A9069DBE417DEFC7C793F97 /* Pods-MZRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZRefresh.debug.xcconfig"; path = "Target Support Files/Pods-MZRefresh/Pods-MZRefresh.debug.xcconfig"; sourceTree = "<group>"; };
+		6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MZRefresh.swift"; sourceTree = "<group>"; };
+		6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshDate.swift; sourceTree = "<group>"; };
+		6A70E7BD27900608009CDDE4 /* TableViewRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRefreshController.swift; sourceTree = "<group>"; };
+		6A70E7BF279006C6009CDDE4 /* CollectionViewRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewRefreshController.swift; sourceTree = "<group>"; };
+		6A70E7C1279006E0009CDDE4 /* RefreshTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTypeController.swift; sourceTree = "<group>"; };
+		6A70E7C327901920009CDDE4 /* RefreshTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTypeCell.swift; sourceTree = "<group>"; };
+		6AB57160278C1C0F0054943C /* MZRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MZRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB57163278C1C0F0054943C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6AB57167278C1C0F0054943C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6AB5716A278C1C0F0054943C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6AB5716C278C1C160054943C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AB5716F278C1C160054943C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6AB57171278C1C160054943C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AB5717B278D12250054943C /* NormalRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalRefreshController.swift; sourceTree = "<group>"; };
+		6AB5717E278D4F240054943C /* MZRefreshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshComponent.swift; sourceTree = "<group>"; };
+		6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshNormalHeader.swift; sourceTree = "<group>"; };
+		6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshNormalFooter.swift; sourceTree = "<group>"; };
+		6AB57184278D5B440054943C /* MZRefresh.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MZRefresh.xcassets; sourceTree = "<group>"; };
+		7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MZRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C211690A490EBB798B5CB576 /* Pods-MZRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZRefresh.release.xcconfig"; path = "Target Support Files/Pods-MZRefresh/Pods-MZRefresh.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6AB5715D278C1C0F0054943C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86ADE7D583058A08F8D03405 /* Pods_MZRefresh.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		141B6C713A6B86423F0D71C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AB57157278C1C0F0054943C = {
+			isa = PBXGroup;
+			children = (
+				6AB57162278C1C0F0054943C /* MZRefresh */,
+				6AB57161278C1C0F0054943C /* Products */,
+				D8C07FD545A37AAD371E361D /* Pods */,
+				141B6C713A6B86423F0D71C3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6AB57161278C1C0F0054943C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AB57160278C1C0F0054943C /* MZRefresh.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AB57162278C1C0F0054943C /* MZRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				6AB5717D278D122B0054943C /* MZRefresh */,
+				6AB57163278C1C0F0054943C /* AppDelegate.swift */,
+				6AB57167278C1C0F0054943C /* ViewController.swift */,
+				6AB5717B278D12250054943C /* NormalRefreshController.swift */,
+				6A70E7BD27900608009CDDE4 /* TableViewRefreshController.swift */,
+				6A70E7BF279006C6009CDDE4 /* CollectionViewRefreshController.swift */,
+				6A70E7C1279006E0009CDDE4 /* RefreshTypeController.swift */,
+				6A70E7C327901920009CDDE4 /* RefreshTypeCell.swift */,
+				6AB57169278C1C0F0054943C /* Main.storyboard */,
+				6AB5716C278C1C160054943C /* Assets.xcassets */,
+				6AB5716E278C1C160054943C /* LaunchScreen.storyboard */,
+				6AB57171278C1C160054943C /* Info.plist */,
+			);
+			path = MZRefresh;
+			sourceTree = "<group>";
+		};
+		6AB5717D278D122B0054943C /* MZRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				6AB5717E278D4F240054943C /* MZRefreshComponent.swift */,
+				6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */,
+				6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */,
+				6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */,
+				6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */,
+				6AB57184278D5B440054943C /* MZRefresh.xcassets */,
+			);
+			path = MZRefresh;
+			sourceTree = "<group>";
+		};
+		D8C07FD545A37AAD371E361D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A9069DBE417DEFC7C793F97 /* Pods-MZRefresh.debug.xcconfig */,
+				C211690A490EBB798B5CB576 /* Pods-MZRefresh.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6AB5715F278C1C0F0054943C /* MZRefresh */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AB57174278C1C160054943C /* Build configuration list for PBXNativeTarget "MZRefresh" */;
+			buildPhases = (
+				A8CD0CF6BB8D49BFE2A1D2A1 /* [CP] Check Pods Manifest.lock */,
+				6AB5715C278C1C0F0054943C /* Sources */,
+				6AB5715D278C1C0F0054943C /* Frameworks */,
+				6AB5715E278C1C0F0054943C /* Resources */,
+				E2A48868CD2CF0ECBB1FFB1B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MZRefresh;
+			productName = MZRefresh;
+			productReference = 6AB57160278C1C0F0054943C /* MZRefresh.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6AB57158278C1C0F0054943C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					6AB5715F278C1C0F0054943C = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 6AB5715B278C1C0F0054943C /* Build configuration list for PBXProject "MZRefresh" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6AB57157278C1C0F0054943C;
+			productRefGroup = 6AB57161278C1C0F0054943C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AB5715F278C1C0F0054943C /* MZRefresh */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6AB5715E278C1C0F0054943C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AB57185278D5B440054943C /* MZRefresh.xcassets in Resources */,
+				6AB57170278C1C160054943C /* LaunchScreen.storyboard in Resources */,
+				6AB5716D278C1C160054943C /* Assets.xcassets in Resources */,
+				6AB5716B278C1C0F0054943C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A8CD0CF6BB8D49BFE2A1D2A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MZRefresh-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2A48868CD2CF0ECBB1FFB1B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MZRefresh/Pods-MZRefresh-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MZRefresh/Pods-MZRefresh-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MZRefresh/Pods-MZRefresh-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6AB5715C278C1C0F0054943C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A70E7BA278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift in Sources */,
+				6AB5717F278D4F240054943C /* MZRefreshComponent.swift in Sources */,
+				6A70E7BC278FB1F8009CDDE4 /* MZRefreshDate.swift in Sources */,
+				6AB57183278D53380054943C /* MZRefreshNormalFooter.swift in Sources */,
+				6AB5717C278D12250054943C /* NormalRefreshController.swift in Sources */,
+				6AB57168278C1C0F0054943C /* ViewController.swift in Sources */,
+				6AB57164278C1C0F0054943C /* AppDelegate.swift in Sources */,
+				6A70E7C2279006E0009CDDE4 /* RefreshTypeController.swift in Sources */,
+				6A70E7BE27900609009CDDE4 /* TableViewRefreshController.swift in Sources */,
+				6A70E7C427901920009CDDE4 /* RefreshTypeCell.swift in Sources */,
+				6A70E7C0279006C6009CDDE4 /* CollectionViewRefreshController.swift in Sources */,
+				6AB57181278D53040054943C /* MZRefreshNormalHeader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6AB57169278C1C0F0054943C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AB5716A278C1C0F0054943C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6AB5716E278C1C160054943C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AB5716F278C1C160054943C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6AB57172278C1C160054943C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6AB57173278C1C160054943C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6AB57175278C1C160054943C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A9069DBE417DEFC7C793F97 /* Pods-MZRefresh.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8JD3VFVV9F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MZRefresh/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mz.MZRefresh;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6AB57176278C1C160054943C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C211690A490EBB798B5CB576 /* Pods-MZRefresh.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8JD3VFVV9F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MZRefresh/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mz.MZRefresh;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6AB5715B278C1C0F0054943C /* Build configuration list for PBXProject "MZRefresh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AB57172278C1C160054943C /* Debug */,
+				6AB57173278C1C160054943C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AB57174278C1C160054943C /* Build configuration list for PBXNativeTarget "MZRefresh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AB57175278C1C160054943C /* Debug */,
+				6AB57176278C1C160054943C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6AB57158278C1C0F0054943C /* Project object */;
+}
