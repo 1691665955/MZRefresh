@@ -14,8 +14,6 @@ extension String {
         value: String? = nil,
         table: String = "Localizable"
     ) -> String {
-        print(language.rawValue)
-        print(Bundle.current as Any)
         guard let path = Bundle.current?.path(forResource: language.rawValue, ofType: "lproj") else {
             return self
         }
@@ -32,6 +30,8 @@ public enum Language: String {
         guard let language = Locale.preferredLanguages.first else { return .en }
         
         if language.contains("zh-HK") { return .zhHant }
+        
+        if language.contains("zh-Hant") { return .zhHant }
         
         if language.contains("zh-Hans") { return .zhHans }
         
