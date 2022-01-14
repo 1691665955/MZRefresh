@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "9.0"
   spec.swift_version = '5.0'
   spec.source_files  = "MZRefresh/MZRefresh/*"
-  spec.s.resource_bundles = {
+  spec.resource_bundles = {
     'MZRefresh' => ['MZRefresh/MZRefresh/Resources/*']
   }
   spec.dependency 'NVActivityIndicatorView'
