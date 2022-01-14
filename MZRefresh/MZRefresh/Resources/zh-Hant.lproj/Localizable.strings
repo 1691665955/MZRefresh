@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  MZRefresh
+
+  Created by 曾龙 on 2022/1/14.
+  
+*/
+
+"pull_down_to_refresh" = "下拉可以刷新";
+"release_to_refresh" = "鬆開立即刷新";
+"loading" = "正在刷新數據中...";
+
+"tap_or_pull_up_to_load_more" = "點擊或上拉加載更多";
+"pull_up_to_load_more" = "上拉可以加載更多";
+"release_to_load_more" = "鬆開立即加載更多";
+"no_more_data" = "沒有更多數據";
+
+"last_update_time" = "最後更新：";
+"today" = "今天";
+"no_record" = "無記錄";

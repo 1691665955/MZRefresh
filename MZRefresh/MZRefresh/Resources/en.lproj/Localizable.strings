@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  MZRefresh
+
+  Created by 曾龙 on 2022/1/14.
+  
+*/
+
+"pull_down_to_refresh" = "Pull down to refresh";
+"release_to_refresh" = "Release to refresh";
+"loading" = "Loading...";
+
+"tap_or_pull_up_to_load_more" = "Tap or pull up to load more";
+"pull_up_to_load_more" = "Pull up to load more";
+"release_to_load_more" = "Release to load more";
+"no_more_data" = "No more data";
+
+"last_update_time" = "Last update: ";
+"today" = "Today";
+"no_record" = "No record";

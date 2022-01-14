@@ -134,11 +134,11 @@ class MZRefreshGifFooterContent: UIView {
         descLabel.font = .systemFont(ofSize: 16)
         self.addSubview(descLabel)
         if status == .normal {
-            descLabel.text = "上拉可以加载更多"
+            descLabel.text = "pull_up_to_load_more".localized()
         } else if status == .ready {
-            descLabel.text = "松开立即加载更多"
+            descLabel.text = "release_to_load_more".localized()
         } else {
-            descLabel.text = "正在刷新数据中..."
+            descLabel.text = "release_to_load_more".localized()
         }
         
         let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)

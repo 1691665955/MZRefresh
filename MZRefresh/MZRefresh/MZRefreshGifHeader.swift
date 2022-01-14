@@ -117,7 +117,7 @@ class MZRefreshGifHeaderContent: UIView {
     var timeString: String? {
         didSet {
             if timeLabel != nil {
-                timeLabel!.text = "最近更新：\(timeString ?? MZRefreshDate.getLastRefreshTime())"
+                timeLabel!.text = "\("last_update_time".localized())\(timeString ?? MZRefreshDate.getLastRefreshTime())"
                 
                 let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
                 let size = timeLabel!.sizeThatFits(maxSize)
@@ -168,11 +168,11 @@ class MZRefreshGifHeaderContent: UIView {
         descLabel!.font = .systemFont(ofSize: 16)
         self.addSubview(descLabel!)
         if status == .normal {
-            descLabel!.text = "下拉可以刷新"
+            descLabel!.text = "pull_down_to_refresh".localized()
         } else if status == .ready {
-            descLabel!.text = "松开立即刷新"
+            descLabel!.text = "release_to_refresh".localized()
         } else {
-            descLabel!.text = "正在刷新数据中..."
+            descLabel!.text = "loading".localized()
         }
         
         if !showTime {
