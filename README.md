@@ -1,9 +1,19 @@
 # MZRefresh
 Swift下拉刷新、上拉加载组件，简单易用，适用于UIScrollView、UITableView、UICollectionView等继承于UIScrollView的组件。
 
-<div align=center>
-<img src="4.gif" width="300px" /><view width="20px"></view><img src="5.gif" width="300px" />
-</div>
+<table>
+
+<tr>
+<th>下拉刷新</th>
+<th>上拉加载</th>
+</tr>
+
+<tr>
+<td><img src="4.gif" width="300"/></td>
+<td><img src="5.gif" width="300"/></td>
+</tr>
+
+</table>
 
 #### 使用
 这里使用UIScrollView为例
@@ -84,6 +94,18 @@ scrollView.stopFooterRefreshing()
 
 
 #### 动画类型
-<div align=center>
-<img src="1.gif" width="300px" /><view width="20px"></view><img src="2.gif" width="300px" /><img src="3.gif" width="300px" />
-</div>
+<table>
+
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+
+<tr>
+<td><img src="1.gif" width="300"/></td>
+<td><img src="2.gif" width="300"/></td>
+<td><img src="3.gif" width="300"/></td>
+</tr>
+
+</table>
