@@ -25,7 +25,7 @@ class TableViewRefreshController: UIViewController, UITableViewDataSource {
         tableView.estimatedRowHeight = 50
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.setRefreshHeader(MZRefreshNormalHeader(type: .ballClipRotatePulse, color: .brown, beginRefresh: {
+        tableView.setRefreshHeader(MZRefreshNormalHeader(type: .ballClipRotatePulse, color: .brown, showTime: false, beginRefresh: {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
                 self?.count = 10
                 self?.tableView.reloadData()

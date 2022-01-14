@@ -14,10 +14,12 @@ open class MZRefreshNormalHeader: MZRefreshComponent {
     /// - Parameters:
     ///   - type: 组件动画类型
     ///   - color: 组件动图颜色
+    ///   - showTime: 是否显示上次下拉刷新时间
     ///   - beginRefresh: 刷新回调
-    public init(type: NVActivityIndicatorType = .lineSpinFadeLoader, color: UIColor = .gray, beginRefresh: @escaping () -> Void) {
+    public init(type: NVActivityIndicatorType = .lineSpinFadeLoader, color: UIColor = .gray, showTime: Bool = true, beginRefresh: @escaping () -> Void) {
         self.type = type
         self.color = color
+        self.showTime = showTime
         self.callback = beginRefresh
     }
     
@@ -25,22 +27,24 @@ open class MZRefreshNormalHeader: MZRefreshComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var type: NVActivityIndicatorType!
+    var type: NVActivityIndicatorType
     
-    var color: UIColor!
+    var color: UIColor
+    
+    var showTime: Bool
     
     var callback: () -> Void
     
     public lazy var refreshNormalView: UIView = {
-        return MZRefreshNormalHeaderContent(refreshOffset: refreshOffset, status: .normal, color: color, type: type)
+        return MZRefreshNormalHeaderContent(refreshOffset: refreshOffset, status: .normal, color: color, type: type, showTime: self.showTime)
     }()
     
     public lazy var refreshReadyView: UIView = {
-        return MZRefreshNormalHeaderContent(refreshOffset: refreshOffset, status: .ready, color: color, type: type)
+        return MZRefreshNormalHeaderContent(refreshOffset: refreshOffset, status: .ready, color: color, type: type, showTime: self.showTime)
     }()
     
     public lazy var refreshingView: UIView = {
-        return MZRefreshNormalHeaderContent(refreshOffset: refreshOffset, status: .refresh, color: color, type: type)
+        return MZRefreshNormalHeaderContent(refreshOffset: refreshOffset, status: .refresh, color: color, type: type, showTime: self.showTime)
     }()
     
     public var refreshOffset: CGFloat {
@@ -69,13 +73,15 @@ open class MZRefreshNormalHeader: MZRefreshComponent {
 class MZRefreshNormalHeaderContent: UIView {
     var timeString: String? {
         didSet {
-            timeLabel!.text = "最近更新：\(timeString ?? MZRefreshDate.getLastRefreshTime())"
-            
-            let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
-            let size = timeLabel!.sizeThatFits(maxSize)
-            timeLabel!.frame = CGRect(x: 30, y: 30, width: size.width, height: 18)
-            descLabel!.frame = CGRect(x: 30, y: 5, width: size.width, height: 22)
-            self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - 30) * 0.5, y: -refreshOffset!, width: size.width + 30, height: refreshOffset!)
+            if timeLabel != nil {
+                timeLabel!.text = "最近更新：\(timeString ?? MZRefreshDate.getLastRefreshTime())"
+                
+                let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
+                let size = timeLabel!.sizeThatFits(maxSize)
+                timeLabel!.frame = CGRect(x: 30, y: 30, width: size.width, height: 18)
+                descLabel!.frame = CGRect(x: 30, y: 5, width: size.width, height: 22)
+                self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - 30) * 0.5, y: -refreshOffset!, width: size.width + 30, height: refreshOffset!)
+            }
         }
     }
     var refreshOffset: CGFloat?
@@ -83,7 +89,7 @@ class MZRefreshNormalHeaderContent: UIView {
     var timeLabel: UILabel?
     var status: MZRefreshStatus?
     
-    convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, color: UIColor, type: NVActivityIndicatorType) {
+    convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, color: UIColor, type: NVActivityIndicatorType, showTime: Bool) {
         self.init(frame: CGRect(x: 0, y: -refreshOffset, width: MZRefreshScreenWidth, height: refreshOffset))
         self.refreshOffset = refreshOffset
         self.status = status
@@ -118,13 +124,20 @@ class MZRefreshNormalHeaderContent: UIView {
             descLabel!.text = "正在刷新数据中..."
         }
         
-        // 上次刷新时间
-        timeLabel = UILabel(frame: CGRect(x: 30, y: 30, width: CGFloat.greatestFiniteMagnitude, height: 18))
-        timeLabel!.textColor = .gray
-        timeLabel!.font = .systemFont(ofSize: 14)
-        self.addSubview(timeLabel!)
-        
-        self.setValue(MZRefreshDate.getLastRefreshTime(), forKey: "timeString")
+        if !showTime {
+            let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
+            let size = descLabel!.sizeThatFits(maxSize)
+            descLabel!.frame = CGRect(x: 30, y: 14, width: size.width, height: 22)
+            self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - 30) * 0.5, y: -refreshOffset, width: size.width + 30, height: refreshOffset)
+        } else {
+            // 上次刷新时间
+            timeLabel = UILabel(frame: CGRect(x: 30, y: 30, width: CGFloat.greatestFiniteMagnitude, height: 18))
+            timeLabel!.textColor = .gray
+            timeLabel!.font = .systemFont(ofSize: 14)
+            self.addSubview(timeLabel!)
+            
+            self.setValue(MZRefreshDate.getLastRefreshTime(), forKey: "timeString")
+        }
     }
     
     override init(frame: CGRect) {
