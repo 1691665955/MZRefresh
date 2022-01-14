@@ -78,8 +78,8 @@ class MZRefreshNormalHeaderContent: UIView {
                 
                 let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
                 let size = timeLabel!.sizeThatFits(maxSize)
-                timeLabel!.frame = CGRect(x: 30, y: 30, width: size.width, height: 18)
-                descLabel!.frame = CGRect(x: 30, y: 5, width: size.width, height: 22)
+                timeLabel!.frame = CGRect(x: 30, y: 29, width: size.width, height: 18)
+                descLabel!.frame = CGRect(x: 30, y: 4, width: size.width, height: 22)
                 self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - 30) * 0.5, y: -refreshOffset!, width: size.width + 30, height: refreshOffset!)
             }
         }
@@ -111,7 +111,7 @@ class MZRefreshNormalHeaderContent: UIView {
         }
         
         // 刷新文字描述
-        descLabel = UILabel(frame: CGRect(x: 30, y: 5, width: CGFloat.greatestFiniteMagnitude, height: 22))
+        descLabel = UILabel(frame: CGRect(x: 30, y: 4, width: CGFloat.greatestFiniteMagnitude, height: 22))
         descLabel!.textAlignment = .center
         descLabel!.textColor = .black
         descLabel!.font = .systemFont(ofSize: 16)
@@ -131,7 +131,7 @@ class MZRefreshNormalHeaderContent: UIView {
             self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - 30) * 0.5, y: -refreshOffset, width: size.width + 30, height: refreshOffset)
         } else {
             // 上次刷新时间
-            timeLabel = UILabel(frame: CGRect(x: 30, y: 30, width: CGFloat.greatestFiniteMagnitude, height: 18))
+            timeLabel = UILabel(frame: CGRect(x: 30, y: 29, width: CGFloat.greatestFiniteMagnitude, height: 18))
             timeLabel!.textColor = .gray
             timeLabel!.font = .systemFont(ofSize: 14)
             self.addSubview(timeLabel!)
