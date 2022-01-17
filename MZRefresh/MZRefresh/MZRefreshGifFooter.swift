@@ -28,7 +28,7 @@ open class MZRefreshGifFooter: MZRefreshComponent {
     ///   - size: gif图片显示大小
     ///   - animationDuration: gif动画时间（默认为gif图片动画时间）
     ///   - beginRefresh: 刷新回调
-    public init(gifImage: Data, size: CGFloat = 30.0, animationDuration: CGFloat = 1.0, beginRefresh: @escaping () -> Void) {
+    public init(gifImage: Data, size: CGFloat = 30.0, animationDuration: CGFloat = 0.0, beginRefresh: @escaping () -> Void) {
         if let imageSource = CGImageSourceCreateWithData(gifImage as CFData, nil) {
             let imageCount = CGImageSourceGetCount(imageSource)
             var images = [UIImage]()
@@ -94,14 +94,20 @@ open class MZRefreshGifFooter: MZRefreshComponent {
     
     public var currentStatus: MZRefreshStatus = .ready {
         didSet {
+            (self.refreshingView as! MZRefreshGifFooterContent).updateStatus(currentStatus)
             self.statusUpdate?(oldValue, currentStatus)
         }
     }
     
     public var statusUpdate: MZRefreshBlock?
+    
+    public func didScroll(_ percent: CGFloat) {
+        self.refreshNormalView.alpha = percent
+    }
 }
 
 class MZRefreshGifFooterContent: UIView {
+    var indicatorView: UIImageView?
     var status: MZRefreshStatus?
     
     convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], size: CGFloat, animationDuration: CGFloat) {
@@ -115,8 +121,8 @@ class MZRefreshGifFooterContent: UIView {
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
             imageView.animationImages = images
             imageView.animationDuration = animationDuration
-            imageView.startAnimating()
             animatedView.addSubview(imageView)
+            self.indicatorView = imageView
         } else {
             let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0, width: 16.0, height: 16.0))
             imageView.image = UIImage(named: status == .normal ? "up" : "down", in: .current, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
@@ -146,6 +152,16 @@ class MZRefreshGifFooterContent: UIView {
         descLabel.frame = CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: size.width, height: 22)
         self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - originX) * 0.5, y: -refreshOffset, width: size.width + originX, height: refreshOffset)
         
+    }
+    
+    func updateStatus(_ status: MZRefreshStatus) {
+        if self.status == .refresh {
+            if status == .refresh {
+                self.indicatorView?.startAnimating()
+            } else {
+                self.indicatorView?.stopAnimating()
+            }
+        }
     }
     
     override init(frame: CGRect) {

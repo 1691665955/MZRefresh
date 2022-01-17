@@ -15,6 +15,12 @@ Swift下拉刷新、上拉加载组件，简单易用，适用于UIScrollView、
 
 </table>
 
+
+#### Cocoapods 引入
+```
+pod 'MZRefresh', '~> 0.0.1'
+```
+
 #### 使用
 这里使用UIScrollView为例
 
@@ -173,4 +179,36 @@ let data = try! Data(contentsOf: URL(fileURLWithPath: path))
 </tr>
 
 </table>
+
+#### MZRefreshOnlyGifHeader
+
+- 刷新组件初始化
+```
+// 下拉刷新组件
+// images               gif分解图片数组
+// size                 gif图片显示大小
+// refreshOffSet        开始刷新所需的偏移量
+// animationDuration    gif动画时间
+// readyImage           释放刷新图片
+// beginRefresh         刷新回调
+MZRefreshOnlyGifHeader(images: animationImages, size: 80, refreshOffSet: 80, animationDuration: 1.0, readyImage: nil, beginRefresh: {
+
+})
+
+// 下拉刷新组件
+// gifImage             gif图片Data
+// size                 gif图片显示大小
+// refreshOffSet        开始刷新所需的偏移量
+// animationDuration    gif动画时间
+// readyImage           释放刷新图片
+// beginRefresh         刷新回调
+MZRefreshOnlyGifHeader(gifImage: data, size: 80, refreshOffSet: 80, animationDuration: 1.0, readyImage: nil, beginRefresh: {
+
+})
+```
+
+<div align=center>
+<img src="8.gif" width="300px" />
+</div>
+
 

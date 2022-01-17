@@ -203,8 +203,10 @@ public extension UIScrollView {
                     let trueOffset = point.y - originOffset
                     if trueOffset > -(self.header?.refreshOffset ?? 0) && trueOffset < 0 {
                         self.header?.currentStatus = .normal
+                        self.header?.didScroll(-trueOffset / (self.header?.refreshOffset ?? 50))
                     } else if trueOffset < -(self.header?.refreshOffset ?? 0) {
                         self.header?.currentStatus = .ready
+                        self.header?.didScroll(1)
                     } else if trueOffset > 0 {
                         if self.contentSize.height == 0 {
                             return
@@ -214,12 +216,13 @@ public extension UIScrollView {
                         if height > self.contentSize.height {
                             if trueOffset < (self.footer?.refreshOffset ?? 0) {
                                 self.footer?.currentStatus = .normal
-                                self.footer?.refreshNormalView.alpha = trueOffset / (self.footer?.refreshOffset ?? 100.0)
+                                self.footer?.didScroll(trueOffset / (self.footer?.refreshOffset ?? 50.0))
                             } else if trueOffset > (self.footer?.refreshOffset ?? 0) {
                                 self.footer?.currentStatus = .ready
+                                self.footer?.didScroll(1)
                             }
                         } else {
-                        // 元素占满屏幕
+                            // 元素占满屏幕
                             var distanceFromBottom: CGFloat
                             if #available(iOS 11.0, *) {
                                 distanceFromBottom = self.contentSize.height - point.y + safeAreaInsets.bottom
@@ -229,9 +232,10 @@ public extension UIScrollView {
                             if distanceFromBottom < height {
                                 if height - distanceFromBottom < (self.footer?.refreshOffset ?? 0) {
                                     self.footer?.currentStatus = .normal
-                                    self.footer?.refreshNormalView.alpha = (height - distanceFromBottom) / (self.footer?.refreshOffset ?? 100.0)
+                                    self.footer?.didScroll((height - distanceFromBottom) / (self.footer?.refreshOffset ?? 50.0))
                                 } else if height - distanceFromBottom > (self.footer?.refreshOffset ?? 0) {
                                     self.footer?.currentStatus = .ready
+                                    self.footer?.didScroll(1)
                                 }
                             }
                         }

@@ -39,4 +39,7 @@ public protocol MZRefreshComponent {
     
     /// 刷新状态更新
     var statusUpdate: MZRefreshBlock? {get set}
+    
+    /// 滚动高度百分比动态监听，根据百分比处理过渡动画
+    func didScroll(_ percent: CGFloat)
 }

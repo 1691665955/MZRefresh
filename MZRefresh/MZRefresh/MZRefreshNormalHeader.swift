@@ -58,6 +58,7 @@ open class MZRefreshNormalHeader: MZRefreshComponent {
     public var currentStatus: MZRefreshStatus = .ready {
         didSet {
             self.statusUpdate?(oldValue, currentStatus)
+            (self.refreshingView as! MZRefreshNormalHeaderContent).updateStatus(currentStatus)
             if oldValue == .refresh && currentStatus == .normal {
                 // 停止刷新
                 (self.refreshNormalView as? MZRefreshNormalHeaderContent)?.timeString = MZRefreshDate.getLastRefreshTime()
@@ -68,6 +69,10 @@ open class MZRefreshNormalHeader: MZRefreshComponent {
     }
     
     public var statusUpdate: MZRefreshBlock?
+    
+    public func didScroll(_ percent: CGFloat) {
+        
+    }
 }
 
 class MZRefreshNormalHeaderContent: UIView {
@@ -84,6 +89,7 @@ class MZRefreshNormalHeaderContent: UIView {
             }
         }
     }
+    var indicatorView: NVActivityIndicatorView?
     var refreshOffset: CGFloat?
     var descLabel: UILabel?
     var timeLabel: UILabel?
@@ -101,7 +107,7 @@ class MZRefreshNormalHeaderContent: UIView {
             let iconView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20.0, height: 20.0), type: type, color: color)
             iconView.center = CGPoint(x: 15, y: 15)
             animatedView.addSubview(iconView)
-            iconView.startAnimating()
+            self.indicatorView = iconView
         } else {
             let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0, width: 16.0, height: 16.0))
             imageView.image = UIImage(named: status == .normal ? "down" : "up", in: .current, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
@@ -137,6 +143,16 @@ class MZRefreshNormalHeaderContent: UIView {
             self.addSubview(timeLabel!)
             
             self.setValue(MZRefreshDate.getLastRefreshTime(), forKey: "timeString")
+        }
+    }
+    
+    func updateStatus(_ status: MZRefreshStatus) {
+        if self.status == .refresh {
+            if status == .refresh {
+                self.indicatorView?.startAnimating()
+            } else {
+                self.indicatorView?.stopAnimating()
+            }
         }
     }
     

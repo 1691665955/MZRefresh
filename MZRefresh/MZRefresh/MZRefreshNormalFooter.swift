@@ -53,14 +53,20 @@ open class MZRefreshNormalFooter: MZRefreshComponent {
     
     public var currentStatus: MZRefreshStatus = .ready {
         didSet {
+            (self.refreshingView as! MZRefreshNormalFooterContent).updateStatus(currentStatus)
             self.statusUpdate?(oldValue, currentStatus)
         }
     }
     
     public var statusUpdate: MZRefreshBlock?
+    
+    public func didScroll(_ percent: CGFloat) {
+        self.refreshNormalView.alpha = percent
+    }
 }
 
 class MZRefreshNormalFooterContent: UIView {
+    var indicatorView: NVActivityIndicatorView?
     var status: MZRefreshStatus?
     
     convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, color: UIColor, type: NVActivityIndicatorType) {
@@ -74,7 +80,7 @@ class MZRefreshNormalFooterContent: UIView {
             let iconView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20.0, height: 20.0), type: type, color: color)
             iconView.center = CGPoint(x: 15, y: 15)
             animatedView.addSubview(iconView)
-            iconView.startAnimating()
+            self.indicatorView = iconView
         } else {
             let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0, width: 16.0, height: 16.0))
             imageView.image = UIImage(named: status == .normal ? "up" : "down", in: .current, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
@@ -101,7 +107,17 @@ class MZRefreshNormalFooterContent: UIView {
         let size = descLabel.sizeThatFits(maxSize)
         descLabel.frame = CGRect(x: 30, y: 14, width: size.width, height: 22)
         self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - 30) * 0.5, y: -refreshOffset, width: size.width + 30, height: refreshOffset)
-
+        
+    }
+    
+    func updateStatus(_ status: MZRefreshStatus) {
+        if self.status == .refresh {
+            if status == .refresh {
+                self.indicatorView?.startAnimating()
+            } else {
+                self.indicatorView?.stopAnimating()
+            }
+        }
     }
     
     override init(frame: CGRect) {

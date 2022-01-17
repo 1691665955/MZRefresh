@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A587CAB2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A587CAA2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift */; };
+		6A587CAF2792B130001053ED /* OnlyGifRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A587CAE2792B130001053ED /* OnlyGifRefreshController.swift */; };
+		6A587CB32792BBCC001053ED /* UIImage+MZRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A587CB22792BBCC001053ED /* UIImage+MZRefresh.swift */; };
+		6A587CB52792C5A4001053ED /* dog.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A587CB42792C5A4001053ED /* dog.gif */; };
+		6A587CB72792C888001053ED /* bird.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A587CB62792C888001053ED /* bird.gif */; };
 		6A70E7BA278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */; };
 		6A70E7BC278FB1F8009CDDE4 /* MZRefreshDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */; };
 		6A70E7BE27900609009CDDE4 /* TableViewRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7BD27900608009CDDE4 /* TableViewRefreshController.swift */; };
@@ -34,6 +39,11 @@
 
 /* Begin PBXFileReference section */
 		0A9069DBE417DEFC7C793F97 /* Pods-MZRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZRefresh.debug.xcconfig"; path = "Target Support Files/Pods-MZRefresh/Pods-MZRefresh.debug.xcconfig"; sourceTree = "<group>"; };
+		6A587CAA2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshOnlyGifHeader.swift; sourceTree = "<group>"; };
+		6A587CAE2792B130001053ED /* OnlyGifRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyGifRefreshController.swift; sourceTree = "<group>"; };
+		6A587CB22792BBCC001053ED /* UIImage+MZRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+MZRefresh.swift"; sourceTree = "<group>"; };
+		6A587CB42792C5A4001053ED /* dog.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dog.gif; sourceTree = "<group>"; };
+		6A587CB62792C888001053ED /* bird.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bird.gif; sourceTree = "<group>"; };
 		6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MZRefresh.swift"; sourceTree = "<group>"; };
 		6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshDate.swift; sourceTree = "<group>"; };
 		6A70E7BD27900608009CDDE4 /* TableViewRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRefreshController.swift; sourceTree = "<group>"; };
@@ -123,9 +133,12 @@
 				6A70E7C1279006E0009CDDE4 /* RefreshTypeController.swift */,
 				6A70E7C327901920009CDDE4 /* RefreshTypeCell.swift */,
 				6A70E7C927911D63009CDDE4 /* GifRefreshController.swift */,
+				6A587CAE2792B130001053ED /* OnlyGifRefreshController.swift */,
 				6AB57169278C1C0F0054943C /* Main.storyboard */,
 				6AB5716C278C1C160054943C /* Assets.xcassets */,
 				6A70E7CB279141C3009CDDE4 /* 1.gif */,
+				6A587CB42792C5A4001053ED /* dog.gif */,
+				6A587CB62792C888001053ED /* bird.gif */,
 				6AB5716E278C1C160054943C /* LaunchScreen.storyboard */,
 				6AB57171278C1C160054943C /* Info.plist */,
 			);
@@ -141,8 +154,10 @@
 				6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */,
 				6A70E7C527910AFE009CDDE4 /* MZRefreshGifHeader.swift */,
 				6A70E7C727910F0D009CDDE4 /* MZRefreshGifFooter.swift */,
+				6A587CAA2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift */,
 				6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */,
 				6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */,
+				6A587CB22792BBCC001053ED /* UIImage+MZRefresh.swift */,
 				6A70E7D52791650D009CDDE4 /* Localized.swift */,
 			);
 			path = MZRefresh;
@@ -222,7 +237,9 @@
 				6AB57185278D5B440054943C /* MZRefresh.xcassets in Resources */,
 				6A70E7CF2791635E009CDDE4 /* Localizable.strings in Resources */,
 				6AB57170278C1C160054943C /* LaunchScreen.storyboard in Resources */,
+				6A587CB52792C5A4001053ED /* dog.gif in Resources */,
 				6AB5716D278C1C160054943C /* Assets.xcassets in Resources */,
+				6A587CB72792C888001053ED /* bird.gif in Resources */,
 				6A70E7CC279141C4009CDDE4 /* 1.gif in Resources */,
 				6AB5716B278C1C0F0054943C /* Main.storyboard in Resources */,
 			);
@@ -282,7 +299,9 @@
 				6AB5717F278D4F240054943C /* MZRefreshComponent.swift in Sources */,
 				6A70E7BC278FB1F8009CDDE4 /* MZRefreshDate.swift in Sources */,
 				6AB57183278D53380054943C /* MZRefreshNormalFooter.swift in Sources */,
+				6A587CB32792BBCC001053ED /* UIImage+MZRefresh.swift in Sources */,
 				6AB5717C278D12250054943C /* NormalRefreshController.swift in Sources */,
+				6A587CAB2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift in Sources */,
 				6AB57168278C1C0F0054943C /* ViewController.swift in Sources */,
 				6AB57164278C1C0F0054943C /* AppDelegate.swift in Sources */,
 				6A70E7C2279006E0009CDDE4 /* RefreshTypeController.swift in Sources */,
@@ -292,6 +311,7 @@
 				6A70E7C0279006C6009CDDE4 /* CollectionViewRefreshController.swift in Sources */,
 				6A70E7C627910AFE009CDDE4 /* MZRefreshGifHeader.swift in Sources */,
 				6A70E7C827910F0D009CDDE4 /* MZRefreshGifFooter.swift in Sources */,
+				6A587CAF2792B130001053ED /* OnlyGifRefreshController.swift in Sources */,
 				6AB57181278D53040054943C /* MZRefreshNormalHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

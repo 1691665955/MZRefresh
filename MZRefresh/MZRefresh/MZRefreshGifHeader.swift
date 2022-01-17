@@ -100,6 +100,7 @@ open class MZRefreshGifHeader: MZRefreshComponent {
     
     public var currentStatus: MZRefreshStatus = .ready {
         didSet {
+            (self.refreshingView as! MZRefreshGifHeaderContent).updateStatus(currentStatus)
             self.statusUpdate?(oldValue, currentStatus)
             if oldValue == .refresh && currentStatus == .normal {
                 // 停止刷新
@@ -111,6 +112,10 @@ open class MZRefreshGifHeader: MZRefreshComponent {
     }
     
     public var statusUpdate: MZRefreshBlock?
+    
+    public func didScroll(_ percent: CGFloat) {
+        
+    }
 }
 
 class MZRefreshGifHeaderContent: UIView {
@@ -129,6 +134,7 @@ class MZRefreshGifHeaderContent: UIView {
             }
         }
     }
+    var indicatorView: UIImageView?
     var refreshOffset: CGFloat?
     var descLabel: UILabel?
     var timeLabel: UILabel?
@@ -149,8 +155,8 @@ class MZRefreshGifHeaderContent: UIView {
             imageView.contentMode = .scaleAspectFit
             imageView.animationImages = images
             imageView.animationDuration = animationDuration
-            imageView.startAnimating()
             animatedView.addSubview(imageView)
+            self.indicatorView = imageView
         } else {
             let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0, width: 16.0, height: 16.0))
             imageView.image = UIImage(named: status == .normal ? "down" : "up", in: .current, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
@@ -188,6 +194,16 @@ class MZRefreshGifHeaderContent: UIView {
             self.addSubview(timeLabel!)
             
             self.setValue(MZRefreshDate.getLastRefreshTime(), forKey: "timeString")
+        }
+    }
+    
+    func updateStatus(_ status: MZRefreshStatus) {
+        if self.status == .refresh {
+            if status == .refresh {
+                self.indicatorView?.startAnimating()
+            } else {
+                self.indicatorView?.stopAnimating()
+            }
         }
     }
     

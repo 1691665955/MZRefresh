@@ -42,7 +42,7 @@ public enum Language: String {
 extension Bundle {
     static let current: Bundle? = {
         guard let resourcePath = Bundle(for: MZRefreshNormalHeader.self).resourcePath else { return nil }
-        return Bundle(path: "\(resourcePath)/MZRefresh.bundle")
+        return Bundle(path: "\(resourcePath)/MZRefresh.bundle") ?? .main
     }()
 }
 

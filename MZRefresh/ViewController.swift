@@ -12,7 +12,7 @@ let SCREEN_HEIGHT = UIScreen.main.bounds.height
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var dataSource: [String] = ["Normal-Scroll-Refresh", "Normal-TableView-Refresh", "Normal-CollectionView-Refresh", "Normal-Refresh-Type", "Gif-Refresh"]
+    var dataSource: [String] = ["Normal-Scroll-Refresh", "Normal-TableView-Refresh", "Normal-CollectionView-Refresh", "Normal-Refresh-Type", "Gif-Refresh", "OnlyGif-Refresh"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             controller = RefreshTypeController()
         case 4:
             controller = GifRefreshController()
+        case 5:
+            controller = OnlyGifRefreshController()
         default:
             break
         }
