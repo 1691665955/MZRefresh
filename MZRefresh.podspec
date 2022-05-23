@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "MZRefresh"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "Swift下拉刷新、上拉加载组件，简单易用，适用于UIScrollView、UITableView、UICollectionView等继承于UIScrollView的组件。"
   spec.homepage     = "https://github.com/1691665955/MZRefresh"
   spec.authors         = { 'MZ' => '1691665955@qq.com' }

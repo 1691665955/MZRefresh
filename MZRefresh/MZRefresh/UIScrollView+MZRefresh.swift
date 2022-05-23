@@ -9,6 +9,8 @@ import UIKit
 
 var MZRefreshHeaderKey = "MZRefreshHeader"
 var MZRefreshFooterKey = "MZRefreshFooterKey"
+var MZRefreshNoMoreDataFooterKey = "MZRefreshNoMoreDataFooterKey"
+var MZRefreshIsNoMoreDataKey = "MZRefreshIsNoMoreDataKey"
 var MZRefreshHeaderOffsetKey = "MZRefreshOffsetHeader"
 var MZRefreshHeaderIsRefreshingKey = "MZRefreshHeaderIsRefreshingKey"
 let MZRefreshHeaderTag = 88888
@@ -88,6 +90,12 @@ public extension UIScrollView {
     
     /// 停止下拉刷新动画
     func stopHeaderRefreshing() {
+        self.isNoMoreData = false
+        self.footer?.refreshNormalView.isHidden = false
+        self.footer?.refreshReadyView.isHidden = false
+        self.footer?.refreshingView.isHidden = false
+        self.noMoreDataFooter?.isHidden = true
+        
         if self.header != nil {
             self.isRefreshing = false
             self.header?.currentStatus = .normal
@@ -95,6 +103,12 @@ public extension UIScrollView {
                 self?.contentInset = UIEdgeInsets.zero
             }
         }
+    }
+    
+    /// 停止下拉刷新动画，并且取消上拉加载，显示“暂无更多数据”
+    func stopHeaderRefreshingWithNoMoreData() {
+        self.stopHeaderRefreshing()
+        self.stopRefreshingWithNoMoreData()
     }
     
     /// 设置上拉加载组件
@@ -169,6 +183,12 @@ public extension UIScrollView {
     
     /// 停止上拉加载动画
     func stopFooterRefreshing() {
+        self.isNoMoreData = false
+        self.footer?.refreshNormalView.isHidden = false
+        self.footer?.refreshReadyView.isHidden = false
+        self.footer?.refreshingView.isHidden = false
+        self.noMoreDataFooter?.isHidden = true
+        
         if self.footer != nil {
             self.isRefreshing = false
             self.footer?.currentStatus = .normal
@@ -180,8 +200,61 @@ public extension UIScrollView {
         }
     }
     
+    /// 停止上拉加载动画，并且取消上拉加载，显示“暂无更多数据”
+    func stopFooterRefreshingWithNoMoreData() {
+        self.stopFooterRefreshing()
+        self.stopRefreshingWithNoMoreData()
+    }
+    
+    /// 设置“NoMoreData”组件
+    /// - Parameter footer: “NoMoreData”组件
+    func setRefreshNoMoreDataView(_ noMoreDataView: UIView? = nil) {
+        self.removeNoMoreDataRefreshFooter()
+        
+        let refreshOffset = noMoreDataView?.frame.height ?? 40
+        let footer = UIView.init(frame: CGRect(x: 0, y: -refreshOffset, width: MZRefreshScreenWidth, height: refreshOffset))
+        
+        if noMoreDataView == nil {
+            let descLabel = UILabel(frame: CGRect(x: 0, y: 0, width: MZRefreshScreenWidth, height: refreshOffset))
+            descLabel.textAlignment = .center
+            descLabel.textColor = .black
+            descLabel.font = .systemFont(ofSize: 16)
+            descLabel.text = "no_more_data".localized()
+            footer.addSubview(descLabel)
+        } else {
+            footer.addSubview(noMoreDataView!)
+        }
+        footer.isHidden = true
+        self.addSubview(footer)
+        
+        self.noMoreDataFooter = footer
+    }
+    
+    /// 移除“NoMoreData”组件
+    func removeNoMoreDataRefreshFooter() {
+        self.noMoreDataFooter?.removeFromSuperview()
+        self.noMoreDataFooter = nil
+    }
+    
+    private func stopRefreshingWithNoMoreData() {
+        self.isNoMoreData = true
+        self.footer?.refreshNormalView.isHidden = true
+        self.footer?.refreshReadyView.isHidden = true
+        self.footer?.refreshingView.isHidden = true
+        
+        if self.noMoreDataFooter == nil {
+            self.setRefreshNoMoreDataView()
+            
+            var frame = self.noMoreDataFooter!.frame
+            frame.origin.y = self.contentSize.height
+            self.noMoreDataFooter!.frame = frame
+        }
+        self.noMoreDataFooter?.alpha = 0
+        self.noMoreDataFooter?.isHidden = false
+    }
+    
     private func addRefreshObserver() {
-        if self.header == nil && self.footer == nil {
+        if self.header == nil && self.footer == nil && self.noMoreDataFooter == nil {
             self.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
             self.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
             self.panGestureRecognizer.addObserver(self, forKeyPath: "state", options: .new, context: nil)
@@ -189,7 +262,7 @@ public extension UIScrollView {
     }
     
     private func removeRefreshObserver() {
-        if self.header == nil && self.footer == nil {
+        if self.header == nil && self.footer == nil && self.noMoreDataFooter == nil {
             self.removeObserver(self, forKeyPath: "contentOffset")
             self.removeObserver(self, forKeyPath: "contentSize")
             self.panGestureRecognizer.removeObserver(self, forKeyPath: "state")
@@ -214,12 +287,20 @@ public extension UIScrollView {
                         let height = self.frame.height
                         // 元素未占满屏幕
                         if height > self.contentSize.height {
-                            if trueOffset < (self.footer?.refreshOffset ?? 0) {
-                                self.footer?.currentStatus = .normal
-                                self.footer?.didScroll(trueOffset / (self.footer?.refreshOffset ?? 50.0))
-                            } else if trueOffset > (self.footer?.refreshOffset ?? 0) {
-                                self.footer?.currentStatus = .ready
-                                self.footer?.didScroll(1)
+                            if !self.isNoMoreData {
+                                if trueOffset < (self.footer?.refreshOffset ?? 0) {
+                                    self.footer?.currentStatus = .normal
+                                    self.footer?.didScroll(trueOffset / (self.footer?.refreshOffset ?? 50.0))
+                                } else if trueOffset > (self.footer?.refreshOffset ?? 0) {
+                                    self.footer?.currentStatus = .ready
+                                    self.footer?.didScroll(1)
+                                }
+                            }
+                            
+                            if trueOffset < (self.noMoreDataFooter?.frame.height ?? 0) {
+                                self.noMoreDataFooter?.alpha = trueOffset / (self.noMoreDataFooter?.frame.height ?? 40.0)
+                            } else if trueOffset > (self.noMoreDataFooter?.frame.height ?? 0) {
+                                self.noMoreDataFooter?.alpha = 1
                             }
                         } else {
                             // 元素占满屏幕
@@ -230,12 +311,20 @@ public extension UIScrollView {
                                 distanceFromBottom = self.contentSize.height - point.y
                             }
                             if distanceFromBottom < height {
-                                if height - distanceFromBottom < (self.footer?.refreshOffset ?? 0) {
-                                    self.footer?.currentStatus = .normal
-                                    self.footer?.didScroll((height - distanceFromBottom) / (self.footer?.refreshOffset ?? 50.0))
-                                } else if height - distanceFromBottom > (self.footer?.refreshOffset ?? 0) {
-                                    self.footer?.currentStatus = .ready
-                                    self.footer?.didScroll(1)
+                                if !self.isNoMoreData {
+                                    if height - distanceFromBottom < (self.footer?.refreshOffset ?? 0) {
+                                        self.footer?.currentStatus = .normal
+                                        self.footer?.didScroll((height - distanceFromBottom) / (self.footer?.refreshOffset ?? 50.0))
+                                    } else if height - distanceFromBottom > (self.footer?.refreshOffset ?? 0) {
+                                        self.footer?.currentStatus = .ready
+                                        self.footer?.didScroll(1)
+                                    }
+                                }
+                                
+                                if height - distanceFromBottom < (self.noMoreDataFooter?.frame.height ?? 0) {
+                                    self.noMoreDataFooter?.alpha = (height - distanceFromBottom) / (self.noMoreDataFooter?.frame.height ?? 40.0)
+                                } else if height - distanceFromBottom > (self.noMoreDataFooter?.frame.height ?? 0) {
+                                    self.noMoreDataFooter?.alpha = 1
                                 }
                             }
                         }
@@ -267,6 +356,12 @@ public extension UIScrollView {
                     refreshFrame.origin.y = size.height
                     self.footer!.refreshingView.frame = refreshFrame
                 }
+                
+                if self.noMoreDataFooter != nil {
+                    var normalFrame = self.noMoreDataFooter!.frame
+                    normalFrame.origin.y = size.height
+                    self.noMoreDataFooter!.frame = normalFrame
+                }
             }
         }
     }
@@ -297,6 +392,15 @@ public extension UIScrollView {
         }
     }
     
+    internal var noMoreDataFooter: UIView? {
+        set {
+            objc_setAssociatedObject(self, &MZRefreshNoMoreDataFooterKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, &MZRefreshNoMoreDataFooterKey) as? UIView
+        }
+    }
+    
     private var originOffset: CGFloat? {
         set {
             objc_setAssociatedObject(self, &MZRefreshHeaderOffsetKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -312,6 +416,15 @@ public extension UIScrollView {
         }
         get {
             return objc_getAssociatedObject(self, &MZRefreshHeaderIsRefreshingKey) as? Bool ?? false
+        }
+    }
+    
+    private var isNoMoreData: Bool {
+        set {
+            objc_setAssociatedObject(self, &MZRefreshIsNoMoreDataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            return objc_getAssociatedObject(self, &MZRefreshIsNoMoreDataKey) as? Bool ?? false
         }
     }
     
@@ -331,4 +444,5 @@ public extension UIScrollView {
         }
         self.contentOffset = CGPoint(x: 0, y: offset)
     }
+    
 }

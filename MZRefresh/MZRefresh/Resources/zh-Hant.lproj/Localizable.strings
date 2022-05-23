@@ -13,7 +13,7 @@
 "tap_or_pull_up_to_load_more" = "點擊或上拉加載更多";
 "pull_up_to_load_more" = "上拉可以加載更多";
 "release_to_load_more" = "鬆開立即加載更多";
-"no_more_data" = "沒有更多數據";
+"no_more_data" = "已經全部加載完畢";
 
 "last_update_time" = "最後更新：";
 "today" = "今天";

@@ -211,4 +211,42 @@ MZRefreshOnlyGifHeader(gifImage: data, size: 80, refreshOffSet: 80, animationDur
 <img src="8.gif" width="300px" />
 </div>
 
+#### stopRefreshingWithNoMoreData
+
+- 设置“NoMoreData”组件
+默认样式不需要设置
+
+```
+let footer = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 40))
+footer.font = .systemFont(ofSize: 14)
+footer.textAlignment = .center
+footer.textColor = .black
+footer.text = "—— 生活的强者，往往都能坚持到底 ——"
+footer.textColor = .brown
+tableView.setRefreshNoMoreDataView(footer)
+```
+
+- 没有更多数据加载，取消上拉加载功能
+
+```
+// 停止下拉刷新动画，并显示没有更多数据
+tableView.stopHeaderRefreshingWithNoMoreData()
+
+// 停止上拉加载动画，并显示没有更多数据
+tableView.stopFooterRefreshingWithNoMoreData()
+```
+
+<table>
+
+<tr>
+<th>默认样式</th>
+<th>自定义样式</th>
+</tr>
+
+<tr>
+<td><img src="9.gif" width="300"/></td>
+<td><img src="10.gif" width="300"/></td>
+</tr>
+
+</table>
 
