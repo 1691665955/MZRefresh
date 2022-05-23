@@ -209,7 +209,7 @@ public extension UIScrollView {
     /// 设置“NoMoreData”组件
     /// - Parameter footer: “NoMoreData”组件
     func setRefreshNoMoreDataView(_ noMoreDataView: UIView? = nil) {
-        self.removeNoMoreDataRefreshFooter()
+        self.removeRefreshNoMoreDataView()
         
         let refreshOffset = noMoreDataView?.frame.height ?? 40
         let footer = UIView.init(frame: CGRect(x: 0, y: -refreshOffset, width: MZRefreshScreenWidth, height: refreshOffset))
@@ -231,7 +231,7 @@ public extension UIScrollView {
     }
     
     /// 移除“NoMoreData”组件
-    func removeNoMoreDataRefreshFooter() {
+    func removeRefreshNoMoreDataView() {
         self.noMoreDataFooter?.removeFromSuperview()
         self.noMoreDataFooter = nil
     }
