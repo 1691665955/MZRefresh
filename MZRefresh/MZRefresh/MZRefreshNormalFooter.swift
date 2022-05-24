@@ -92,7 +92,6 @@ class MZRefreshNormalFooterContent: UIView {
         // 刷新文字描述
         let descLabel = UILabel(frame: CGRect(x: 30, y: 14, width: CGFloat.greatestFiniteMagnitude, height: 22))
         descLabel.textAlignment = .center
-        descLabel.textColor = .black
         descLabel.font = .systemFont(ofSize: 16)
         self.addSubview(descLabel)
         if status == .normal {

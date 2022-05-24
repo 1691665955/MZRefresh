@@ -136,7 +136,6 @@ class MZRefreshGifFooterContent: UIView {
         // 刷新文字描述
         let descLabel = UILabel(frame: CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: CGFloat.greatestFiniteMagnitude, height: 22))
         descLabel.textAlignment = .center
-        descLabel.textColor = .black
         descLabel.font = .systemFont(ofSize: 16)
         self.addSubview(descLabel)
         if status == .normal {

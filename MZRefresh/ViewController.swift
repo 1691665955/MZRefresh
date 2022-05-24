@@ -16,6 +16,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.init(dynamicProvider: { traitCollection in
+                return (traitCollection.userInterfaceStyle == .dark) ? .black : .white
+            })
+        } else {
+            self.view.backgroundColor = .white
+        }
         self.title = "MZRefresh"
         self.config()
     }

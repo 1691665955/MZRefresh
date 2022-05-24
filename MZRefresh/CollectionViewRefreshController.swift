@@ -42,7 +42,13 @@ class CollectionViewRefreshController: UIViewController, UICollectionViewDataSou
         layout.minimumInteritemSpacing = space
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = UIColor.init(dynamicProvider: { traitCollection in
+                return (traitCollection.userInterfaceStyle == .dark) ? .black : .white
+            })
+        } else {
+            collectionView.backgroundColor = .white
+        }
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCell")
         collectionView.setRefreshHeader(MZRefreshNormalHeader(type: .lineScaleParty, color: .brown, beginRefresh: {
@@ -66,8 +72,13 @@ class CollectionViewRefreshController: UIViewController, UICollectionViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.init(dynamicProvider: { traitCollection in
+                return (traitCollection.userInterfaceStyle == .dark) ? .black : .white
+            })
+        } else {
+            self.view.backgroundColor = .white
+        }
         self.view.addSubview(self.collectionView)
         self.collectionView.startHeaderRefreshing()
     }

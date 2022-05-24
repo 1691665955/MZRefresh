@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.count
     }
@@ -45,9 +45,8 @@ class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
         let footer = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 40))
         footer.font = .systemFont(ofSize: 14)
         footer.textAlignment = .center
-        footer.textColor = .black
-        footer.text = "—— 生活的强者，往往都能坚持到底 ——"
         footer.textColor = .brown
+        footer.text = "—— 生活的强者，往往都能坚持到底 ——"
         tableView.setRefreshNoMoreDataView(footer)
         return tableView
     }()
@@ -56,10 +55,15 @@ class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.init(dynamicProvider: { traitCollection in
+                return (traitCollection.userInterfaceStyle == .dark) ? .black : .white
+            })
+        } else {
+            self.view.backgroundColor = .white
+        }
         self.view.addSubview(self.tableView)
         self.tableView.startHeaderRefreshing()
     }
-
+    
 }

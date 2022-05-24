@@ -42,8 +42,13 @@ class OnlyGifRefreshController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.init(dynamicProvider: { traitCollection in
+                return (traitCollection.userInterfaceStyle == .dark) ? .black : .white
+            })
+        } else {
+            self.view.backgroundColor = .white
+        }
         self.view.addSubview(self.tableView)
         self.tableView.startHeaderRefreshing()
     }

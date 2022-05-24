@@ -217,7 +217,6 @@ public extension UIScrollView {
         if noMoreDataView == nil {
             let descLabel = UILabel(frame: CGRect(x: 0, y: 0, width: MZRefreshScreenWidth, height: refreshOffset))
             descLabel.textAlignment = .center
-            descLabel.textColor = .black
             descLabel.font = .systemFont(ofSize: 16)
             descLabel.text = "no_more_data".localized()
             footer.addSubview(descLabel)
