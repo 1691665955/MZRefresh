@@ -8,7 +8,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-open class MZRefreshNormalHeader: MZRefreshComponent {
+open class MZRefreshNormalHeader: MZRefreshHeaderComponent {
     
     /// 下拉刷新组件
     /// - Parameters:

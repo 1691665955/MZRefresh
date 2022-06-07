@@ -18,7 +18,7 @@ Swift下拉刷新、上拉加载组件，简单易用，适用于UIScrollView、
 
 #### Cocoapods 引入
 ```
-pod 'MZRefresh', '~> 0.0.3'
+pod 'MZRefresh', '~> 0.0.4'
 ```
 
 #### 使用
@@ -31,6 +31,7 @@ scrollView.setRefreshHeader(MZRefreshNormalHeader(beginRefresh: {
     // 请求数据，请求到数据后记得停止刷新动画
     self?.loadNew()
 }))
+
 // 添加上拉加载组件
 scrollView.setRefreshFooter(MZRefreshNormalFooter(beginRefresh: {
     // 请求数据，请求到数据后记得停止刷新动画
@@ -54,6 +55,7 @@ func loadMore(_ count: Int) {
 ```
 // 移除下拉刷新组件
 scrollView.removeRefreshHeader()
+
 // 移除上拉加载组件
 scrollView.removeRefreshFooter()
 ```
@@ -73,6 +75,7 @@ self.scrollView.startFooterRefreshing(animated: true)
 ```
 // 停止下拉刷新动画
 scrollView.stopHeaderRefreshing()
+
 // 停止上拉加载动画
 scrollView.stopFooterRefreshing()
 ```
@@ -249,4 +252,13 @@ tableView.stopFooterRefreshingWithNoMoreData()
 </tr>
 
 </table>
+
+#### 自定义
+
+- 下拉刷新
+通过MZRefreshHeaderComponent协议实现下拉刷新组件自定义，可参考MZRefreshNormalHeader、MZRefreshOnlyGifHeader等组件实现
+
+- 上拉加载
+通过MZRefreshFooterComponent协议实现下拉刷新组件自定义，可参考MZRefreshNormalFooter、MZRefreshGifFooter等组件实现
+
 

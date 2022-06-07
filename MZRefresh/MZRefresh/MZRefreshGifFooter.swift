@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class MZRefreshGifFooter: MZRefreshComponent {
+open class MZRefreshGifFooter: MZRefreshFooterComponent {
     
     /// 上拉加载组件
     /// - Parameters:

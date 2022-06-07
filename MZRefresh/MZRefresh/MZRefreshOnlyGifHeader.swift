@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class MZRefreshOnlyGifHeader: MZRefreshComponent {
+open class MZRefreshOnlyGifHeader: MZRefreshHeaderComponent {
     
     /// 下拉刷新组件
     /// - Parameters:

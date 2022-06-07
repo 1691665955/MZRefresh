@@ -20,7 +20,7 @@ public extension UIScrollView {
     
     /// 添加下拉刷新组件
     /// - Parameter header: 下拉刷新组件
-    func setRefreshHeader(_ header: MZRefreshComponent) {
+    func setRefreshHeader(_ header: MZRefreshHeaderComponent) {
         self.removeRefreshHeader()
         addRefreshObserver()
         // 没有设置contentSize也可以滚动
@@ -113,7 +113,7 @@ public extension UIScrollView {
     
     /// 设置上拉加载组件
     /// - Parameter footer: 上拉加载组件
-    func setRefreshFooter(_ footer: MZRefreshComponent) {
+    func setRefreshFooter(_ footer: MZRefreshFooterComponent) {
         self.removeRefreshFooter()
         addRefreshObserver()
         // 没有设置contentSize也可以滚动
@@ -373,21 +373,21 @@ public extension UIScrollView {
         }
     }
     
-    internal var header: MZRefreshComponent? {
+    internal var header: MZRefreshHeaderComponent? {
         set {
             objc_setAssociatedObject(self, &MZRefreshHeaderKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, &MZRefreshHeaderKey) as? MZRefreshComponent
+            return objc_getAssociatedObject(self, &MZRefreshHeaderKey) as? MZRefreshHeaderComponent
         }
     }
     
-    internal var footer: MZRefreshComponent? {
+    internal var footer: MZRefreshFooterComponent? {
         set {
             objc_setAssociatedObject(self, &MZRefreshFooterKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            return objc_getAssociatedObject(self, &MZRefreshFooterKey) as? MZRefreshComponent
+            return objc_getAssociatedObject(self, &MZRefreshFooterKey) as? MZRefreshFooterComponent
         }
     }
     
