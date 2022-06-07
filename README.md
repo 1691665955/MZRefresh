@@ -256,9 +256,11 @@ tableView.stopFooterRefreshingWithNoMoreData()
 #### 自定义
 
 - 下拉刷新
+
 通过MZRefreshHeaderComponent协议实现下拉刷新组件自定义，可参考MZRefreshNormalHeader、MZRefreshOnlyGifHeader等组件实现
 
 - 上拉加载
+
 通过MZRefreshFooterComponent协议实现下拉刷新组件自定义，可参考MZRefreshNormalFooter、MZRefreshGifFooter等组件实现
 
 
