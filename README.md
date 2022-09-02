@@ -18,7 +18,7 @@ Swift下拉刷新、上拉加载组件，简单易用，适用于UIScrollView、
 
 #### Cocoapods 引入
 ```
-pod 'MZRefresh', '~> 0.0.4'
+pod 'MZRefresh', '~> 0.0.5'
 ```
 
 #### 使用
