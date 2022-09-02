@@ -79,16 +79,18 @@ open class MZRefreshGifHeader: MZRefreshHeaderComponent {
     var callback: () -> Void
     
     public lazy var refreshNormalView: UIView = {
-        return MZRefreshGifHeaderContent(refreshOffset: refreshOffset, status: .normal, images: self.images, size: self.size, animationDuration: self.animationDuration, showTime: self.showTime)
+        return MZRefreshGifHeaderContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .normal, images: self.images, size: self.size, animationDuration: self.animationDuration, showTime: self.showTime)
     }()
     
     public lazy var refreshReadyView: UIView = {
-        return MZRefreshGifHeaderContent(refreshOffset: refreshOffset, status: .ready, images: self.images, size: self.size, animationDuration: self.animationDuration, showTime: self.showTime)
+        return MZRefreshGifHeaderContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .ready, images: self.images, size: self.size, animationDuration: self.animationDuration, showTime: self.showTime)
     }()
     
     public lazy var refreshingView: UIView = {
-        return MZRefreshGifHeaderContent(refreshOffset: refreshOffset, status: .refresh, images: self.images, size: self.size, animationDuration: self.animationDuration, showTime: self.showTime)
+        return MZRefreshGifHeaderContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .refresh, images: self.images, size: self.size, animationDuration: self.animationDuration, showTime: self.showTime)
     }()
+    
+    public var refreshWidth: CGFloat = MZRefreshScreenWidth
     
     public var refreshOffset: CGFloat {
         return max(self.size, 50.0)
@@ -116,6 +118,10 @@ open class MZRefreshGifHeader: MZRefreshHeaderComponent {
     public func didScroll(_ percent: CGFloat) {
         
     }
+    
+    public func refreshWidthUpdate(_ width: CGFloat) {
+        self.refreshWidth = width
+    }
 }
 
 class MZRefreshGifHeaderContent: UIView {
@@ -130,19 +136,22 @@ class MZRefreshGifHeaderContent: UIView {
                 let originX = (self.size ?? 0) + 3
                 timeLabel!.frame = CGRect(x: originX, y: 29 + (refreshOffset! - 50) * 0.5, width: size.width, height: 18)
                 descLabel!.frame = CGRect(x: originX, y: 4 + (refreshOffset! - 50) * 0.5, width: size.width, height: 22)
-                self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - originX) * 0.5, y: -refreshOffset!, width: size.width + originX, height: refreshOffset!)
+                self.frame = CGRect(x: (refreshWidth! - size.width - originX) * 0.5, y: -refreshOffset!, width: size.width + originX, height: refreshOffset!)
             }
         }
     }
     var indicatorView: UIImageView?
+    var refreshWidth: CGFloat?
     var refreshOffset: CGFloat?
     var descLabel: UILabel?
     var timeLabel: UILabel?
     var status: MZRefreshStatus?
     var size: CGFloat?
     
-    convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], size: CGFloat, animationDuration: CGFloat, showTime: Bool) {
-        self.init(frame: CGRect(x: 0, y: -refreshOffset, width: MZRefreshScreenWidth, height: refreshOffset))
+    convenience init(refreshWidth: CGFloat, refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], size: CGFloat, animationDuration: CGFloat, showTime: Bool) {
+        self.init(frame: CGRect(x: 0, y: -refreshOffset, width: refreshWidth, height: refreshOffset))
+        
+        self.refreshWidth = refreshWidth
         self.refreshOffset = refreshOffset
         self.status = status
         self.size = size
@@ -170,7 +179,8 @@ class MZRefreshGifHeaderContent: UIView {
         // 刷新文字描述
         descLabel = UILabel(frame: CGRect(x: originX, y: 4 + (refreshOffset - 50) * 0.5, width: CGFloat.greatestFiniteMagnitude, height: 22))
         descLabel!.textAlignment = .center
-        descLabel!.font = .systemFont(ofSize: 16)
+        descLabel!.font = MZRefreshConfig.shareInstance.statusFont
+        descLabel?.textColor = MZRefreshConfig.shareInstance.statusColor
         self.addSubview(descLabel!)
         if status == .normal {
             descLabel!.text = "pull_down_to_refresh".localized()
@@ -184,16 +194,38 @@ class MZRefreshGifHeaderContent: UIView {
             let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
             let size = descLabel!.sizeThatFits(maxSize)
             descLabel!.frame = CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: size.width, height: 22)
-            self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - originX) * 0.5, y: -refreshOffset, width: size.width + originX, height: refreshOffset)
+            self.frame = CGRect(x: (refreshWidth - size.width - originX) * 0.5, y: -refreshOffset, width: size.width + originX, height: refreshOffset)
         } else {
             // 上次刷新时间
             timeLabel = UILabel(frame: CGRect(x: originX, y: 29 + (refreshOffset - 50) * 0.5, width: CGFloat.greatestFiniteMagnitude, height: 18))
-            timeLabel!.textColor = .gray
-            timeLabel!.font = .systemFont(ofSize: 14)
+            timeLabel!.textColor = MZRefreshConfig.shareInstance.timeColor
+            timeLabel!.font = MZRefreshConfig.shareInstance.timeFont
             self.addSubview(timeLabel!)
             
             self.setValue(MZRefreshDate.getLastRefreshTime(), forKey: "timeString")
         }
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStatusColor), name: Notification.Name.MZRefreshStatusColorChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTimeColor), name: Notification.Name.MZRefreshTimeColorChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStatusFont), name: Notification.Name.MZRefreshStatusFontChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTimeFont), name: Notification.Name.MZRefreshTimeFontChanged, object: nil)
+    }
+    
+    @objc func updateStatusColor(notification: Notification) {
+        descLabel?.textColor = MZRefreshConfig.shareInstance.statusColor
+    }
+    
+    @objc func updateTimeColor(notification: Notification) {
+        timeLabel?.textColor = MZRefreshConfig.shareInstance.timeColor
+    }
+    
+    @objc func updateStatusFont(notification: Notification) {
+        descLabel?.font = MZRefreshConfig.shareInstance.statusFont
+    }
+    
+    @objc func updateTimeFont(notification: Notification) {
+        timeLabel?.font = MZRefreshConfig.shareInstance.timeFont
     }
     
     func updateStatus(_ status: MZRefreshStatus) {
@@ -212,6 +244,10 @@ class MZRefreshGifHeaderContent: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func setValue(_ value: Any?, forKey key: String) {

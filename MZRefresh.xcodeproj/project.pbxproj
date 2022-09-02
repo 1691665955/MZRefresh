@@ -38,6 +38,7 @@
 		6AB57181278D53040054943C /* MZRefreshNormalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */; };
 		6AB57183278D53380054943C /* MZRefreshNormalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */; };
 		6AB57185278D5B440054943C /* MZRefresh.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB57184278D5B440054943C /* MZRefresh.xcassets */; };
+		6ACF9FB628C1A17B0075938F /* MZRefreshConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF9FB528C1A17B0075938F /* MZRefreshConfig.swift */; };
 		86ADE7D583058A08F8D03405 /* Pods_MZRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshNormalHeader.swift; sourceTree = "<group>"; };
 		6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshNormalFooter.swift; sourceTree = "<group>"; };
 		6AB57184278D5B440054943C /* MZRefresh.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MZRefresh.xcassets; sourceTree = "<group>"; };
+		6ACF9FB528C1A17B0075938F /* MZRefreshConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshConfig.swift; sourceTree = "<group>"; };
 		7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MZRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C211690A490EBB798B5CB576 /* Pods-MZRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZRefresh.release.xcconfig"; path = "Target Support Files/Pods-MZRefresh/Pods-MZRefresh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				6A70E7C727910F0D009CDDE4 /* MZRefreshGifFooter.swift */,
 				6A587CAA2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift */,
 				6A70E7B9278D6B86009CDDE4 /* UIScrollView+MZRefresh.swift */,
+				6ACF9FB528C1A17B0075938F /* MZRefreshConfig.swift */,
 				6A70E7BB278FB1F7009CDDE4 /* MZRefreshDate.swift */,
 				6A587CB22792BBCC001053ED /* UIImage+MZRefresh.swift */,
 				6A70E7D52791650D009CDDE4 /* Localized.swift */,
@@ -318,6 +321,7 @@
 				6A587CAB2792A3AD001053ED /* MZRefreshOnlyGifHeader.swift in Sources */,
 				6AB57168278C1C0F0054943C /* ViewController.swift in Sources */,
 				6A15FDE1283B63E900450FDC /* DefaultNoMoreDataController.swift in Sources */,
+				6ACF9FB628C1A17B0075938F /* MZRefreshConfig.swift in Sources */,
 				6A15FDE5284ED4EC00450FDC /* MZRefreshHeaderComponent.swift in Sources */,
 				6AB57164278C1C0F0054943C /* AppDelegate.swift in Sources */,
 				6A70E7C2279006E0009CDDE4 /* RefreshTypeController.swift in Sources */,
@@ -504,7 +508,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mz.MZRefresh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mz.MZRefreshComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -534,7 +538,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mz.MZRefresh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mz.MZRefreshComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

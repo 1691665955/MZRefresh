@@ -78,18 +78,20 @@ open class MZRefreshOnlyGifHeader: MZRefreshHeaderComponent {
     
     public lazy var refreshNormalView: UIView = {
         let imageList = self.images
-        return MZRefreshOnlyGifHeaderContent(refreshOffset: refreshOffset, status: .normal, images: imageList, animationDuration: self.animationDuration, size: self.size, readyImage: self.readyImage)
+        return MZRefreshOnlyGifHeaderContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .normal, images: imageList, animationDuration: self.animationDuration, size: self.size, readyImage: self.readyImage)
     }()
     
     public lazy var refreshReadyView: UIView = {
         let imageList = self.images
-        return MZRefreshOnlyGifHeaderContent(refreshOffset: refreshOffset, status: .ready, images: imageList, animationDuration: self.animationDuration, size: self.size, readyImage: self.readyImage)
+        return MZRefreshOnlyGifHeaderContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .ready, images: imageList, animationDuration: self.animationDuration, size: self.size, readyImage: self.readyImage)
     }()
     
     public lazy var refreshingView: UIView = {
         let imageList = self.images
-        return MZRefreshOnlyGifHeaderContent(refreshOffset: refreshOffset, status: .refresh, images: imageList, animationDuration: self.animationDuration, size: self.size, readyImage: self.readyImage)
+        return MZRefreshOnlyGifHeaderContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .refresh, images: imageList, animationDuration: self.animationDuration, size: self.size, readyImage: self.readyImage)
     }()
+    
+    public var refreshWidth: CGFloat = MZRefreshScreenWidth
     
     public var refreshOffset: CGFloat {
         return self.offset
@@ -116,28 +118,30 @@ open class MZRefreshOnlyGifHeader: MZRefreshHeaderComponent {
         imageView.image = self.images[count]
     }
     
+    public func refreshWidthUpdate(_ width: CGFloat) {
+        self.refreshWidth = width
+    }
+    
 }
 
 
 class MZRefreshOnlyGifHeaderContent: UIView {
     var indicatorView: UIImageView?
-    var refreshOffset: CGFloat?
     var status: MZRefreshStatus?
     
-    convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], animationDuration: CGFloat, size: CGFloat, readyImage: UIImage?) {
-        self.init(frame: CGRect(x: 0, y: -1000, width: MZRefreshScreenWidth, height: 1000))
-        self.refreshOffset = refreshOffset
+    convenience init(refreshWidth: CGFloat, refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], animationDuration: CGFloat, size: CGFloat, readyImage: UIImage?) {
+        self.init(frame: CGRect(x: 0, y: -1000, width: refreshWidth, height: 1000))
         self.status = status
         // 刷新图标
         if status == .refresh {
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 1000 - refreshOffset + (refreshOffset - size) * 0.5, width: MZRefreshScreenWidth, height: size))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 1000 - refreshOffset + (refreshOffset - size) * 0.5, width: refreshWidth, height: size))
             imageView.contentMode = .scaleAspectFit
             imageView.animationImages = images
             imageView.animationDuration = animationDuration
             self.addSubview(imageView)
             self.indicatorView = imageView
         } else {
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 1000 - refreshOffset  + (refreshOffset - size) * 0.5, width: MZRefreshScreenWidth, height: size))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 1000 - refreshOffset  + (refreshOffset - size) * 0.5, width: refreshWidth, height: size))
             imageView.contentMode = .scaleAspectFit
             imageView.image = status == .normal ? images.first : (readyImage ?? images.last)
             self.addSubview(imageView)

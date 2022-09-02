@@ -21,6 +21,13 @@ public extension UIScrollView {
     /// 添加下拉刷新组件
     /// - Parameter header: 下拉刷新组件
     func setRefreshHeader(_ header: MZRefreshHeaderComponent) {
+        
+        // 处理刷新组件宽度不是全屏的问题
+        let refreshWidth = self.frame.width
+        if refreshWidth != MZRefreshScreenWidth {
+            header.refreshWidthUpdate(refreshWidth)
+        }
+        
         self.removeRefreshHeader()
         addRefreshObserver()
         // 没有设置contentSize也可以滚动
@@ -114,6 +121,13 @@ public extension UIScrollView {
     /// 设置上拉加载组件
     /// - Parameter footer: 上拉加载组件
     func setRefreshFooter(_ footer: MZRefreshFooterComponent) {
+        
+        // 处理刷新组件宽度不是全屏的问题
+        let refreshWidth = self.frame.width
+        if refreshWidth != MZRefreshScreenWidth {
+            footer.refreshWidthUpdate(refreshWidth)
+        }
+        
         self.removeRefreshFooter()
         addRefreshObserver()
         // 没有设置contentSize也可以滚动
@@ -212,10 +226,10 @@ public extension UIScrollView {
         self.removeRefreshNoMoreDataView()
         
         let refreshOffset = noMoreDataView?.frame.height ?? 40
-        let footer = UIView.init(frame: CGRect(x: 0, y: -refreshOffset, width: MZRefreshScreenWidth, height: refreshOffset))
+        let footer = UIView.init(frame: CGRect(x: 0, y: -refreshOffset, width: self.frame.width, height: refreshOffset))
         
         if noMoreDataView == nil {
-            let descLabel = UILabel(frame: CGRect(x: 0, y: 0, width: MZRefreshScreenWidth, height: refreshOffset))
+            let descLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: refreshOffset))
             descLabel.textAlignment = .center
             descLabel.font = .systemFont(ofSize: 16)
             descLabel.text = "no_more_data".localized()

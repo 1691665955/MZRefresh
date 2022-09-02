@@ -80,6 +80,17 @@ scrollView.stopHeaderRefreshing()
 scrollView.stopFooterRefreshing()
 ```
 
+#### 配置管理
+
+- 通过MZRefreshConfig类管理部分组件属性
+
+```
+MZRefreshConfig.shareInstance.setRefreshStatusColor(.brown)
+MZRefreshConfig.shareInstance.setRefreshStatusFont(.systemFont(ofSize: 18))
+MZRefreshConfig.shareInstance.setRefreshTimeColor(.cyan)
+MZRefreshConfig.shareInstance.setRefreshTimeFont(.systemFont(ofSize: 12))
+```
+
 
 #### MZRefreshNormalHeader & MZRefreshNormalFooter
 

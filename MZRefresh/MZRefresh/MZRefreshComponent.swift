@@ -19,6 +19,9 @@ public enum MZRefreshStatus: Int {
 
 public protocol MZRefreshComponent {
     
+    /// 刷新组件的宽度
+    var refreshWidth: CGFloat {get set}
+    
     /// 刷新状态
     var currentStatus: MZRefreshStatus { get set }
     
@@ -42,4 +45,7 @@ public protocol MZRefreshComponent {
     
     /// 滚动高度百分比动态监听，根据百分比处理过渡动画
     func didScroll(_ percent: CGFloat)
+    
+    /// 刷新组件宽度更新
+    func refreshWidthUpdate(_ width: CGFloat)
 }

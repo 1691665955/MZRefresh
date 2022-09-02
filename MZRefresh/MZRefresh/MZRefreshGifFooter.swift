@@ -73,16 +73,18 @@ open class MZRefreshGifFooter: MZRefreshFooterComponent {
     var callback: () -> Void
     
     public lazy var refreshNormalView: UIView =  {
-        return MZRefreshGifFooterContent(refreshOffset: refreshOffset, status: .normal, images: self.images, size: self.size, animationDuration: self.animationDuration)
+        return MZRefreshGifFooterContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .normal, images: self.images, size: self.size, animationDuration: self.animationDuration)
     }()
     
     public lazy var refreshReadyView: UIView = {
-        return MZRefreshGifFooterContent(refreshOffset: refreshOffset, status: .ready, images: self.images, size: self.size, animationDuration: self.animationDuration)
+        return MZRefreshGifFooterContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .ready, images: self.images, size: self.size, animationDuration: self.animationDuration)
     }()
     
     public lazy var refreshingView: UIView = {
-        return MZRefreshGifFooterContent(refreshOffset: refreshOffset, status: .refresh, images: self.images, size: self.size, animationDuration: self.animationDuration)
+        return MZRefreshGifFooterContent(refreshWidth: refreshWidth, refreshOffset: refreshOffset, status: .refresh, images: self.images, size: self.size, animationDuration: self.animationDuration)
     }()
+    
+    public var refreshWidth: CGFloat = MZRefreshScreenWidth
     
     public var refreshOffset: CGFloat {
         return max(self.size, 50.0)
@@ -104,14 +106,19 @@ open class MZRefreshGifFooter: MZRefreshFooterComponent {
     public func didScroll(_ percent: CGFloat) {
         self.refreshNormalView.alpha = percent
     }
+    
+    public func refreshWidthUpdate(_ width: CGFloat) {
+        self.refreshWidth = width
+    }
 }
 
 class MZRefreshGifFooterContent: UIView {
     var indicatorView: UIImageView?
     var status: MZRefreshStatus?
+    var descLabel: UILabel?
     
-    convenience init(refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], size: CGFloat, animationDuration: CGFloat) {
-        self.init(frame: CGRect(x: 0, y: -refreshOffset, width: MZRefreshScreenWidth, height: refreshOffset))
+    convenience init(refreshWidth: CGFloat, refreshOffset: CGFloat, status: MZRefreshStatus, images: [UIImage], size: CGFloat, animationDuration: CGFloat) {
+        self.init(frame: CGRect(x: 0, y: -refreshOffset, width: refreshWidth, height: refreshOffset))
         self.status = status
         
         let animatedView = UIView(frame: CGRect(x: 0, y: (refreshOffset - size) * 0.5, width: size, height: size))
@@ -134,23 +141,35 @@ class MZRefreshGifFooterContent: UIView {
         let originX = size + 3
         
         // 刷新文字描述
-        let descLabel = UILabel(frame: CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: CGFloat.greatestFiniteMagnitude, height: 22))
-        descLabel.textAlignment = .center
-        descLabel.font = .systemFont(ofSize: 16)
-        self.addSubview(descLabel)
+        descLabel = UILabel(frame: CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: CGFloat.greatestFiniteMagnitude, height: 22))
+        descLabel!.textAlignment = .center
+        descLabel!.font = MZRefreshConfig.shareInstance.statusFont
+        descLabel?.textColor = MZRefreshConfig.shareInstance.statusColor
+        self.addSubview(descLabel!)
         if status == .normal {
-            descLabel.text = "pull_up_to_load_more".localized()
+            descLabel!.text = "pull_up_to_load_more".localized()
         } else if status == .ready {
-            descLabel.text = "release_to_load_more".localized()
+            descLabel!.text = "release_to_load_more".localized()
         } else {
-            descLabel.text = "release_to_load_more".localized()
+            descLabel!.text = "release_to_load_more".localized()
         }
         
         let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 18)
-        let size = descLabel.sizeThatFits(maxSize)
-        descLabel.frame = CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: size.width, height: 22)
-        self.frame = CGRect(x: (MZRefreshScreenWidth - size.width - originX) * 0.5, y: -refreshOffset, width: size.width + originX, height: refreshOffset)
+        let size = descLabel!.sizeThatFits(maxSize)
+        descLabel!.frame = CGRect(x: originX, y: 14 + (refreshOffset - 50) * 0.5, width: size.width, height: 22)
+        self.frame = CGRect(x: (refreshWidth - size.width - originX) * 0.5, y: -refreshOffset, width: size.width + originX, height: refreshOffset)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStatusColor), name: Notification.Name.MZRefreshStatusColorChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateStatusFont), name: Notification.Name.MZRefreshStatusFontChanged, object: nil)
+    }
+    
+    @objc func updateStatusColor(notification: Notification) {
+        descLabel?.textColor = MZRefreshConfig.shareInstance.statusColor
+    }
+    
+    @objc func updateStatusFont(notification: Notification) {
+        descLabel?.font = MZRefreshConfig.shareInstance.statusFont
     }
     
     func updateStatus(_ status: MZRefreshStatus) {
@@ -169,6 +188,10 @@ class MZRefreshGifFooterContent: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func removeFromSuperview() {
