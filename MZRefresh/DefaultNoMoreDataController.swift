@@ -21,7 +21,7 @@ class DefaultNoMoreDataController: UIViewController, UITableViewDataSource {
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: self.view.bounds, style: .plain)
+        let tableView = UITableView()
         tableView.dataSource = self
         tableView.estimatedRowHeight = 50
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
@@ -55,7 +55,17 @@ class DefaultNoMoreDataController: UIViewController, UITableViewDataSource {
             self.view.backgroundColor = .white
         }
         self.view.addSubview(self.tableView)
+        makeConstraints()
+        
         self.tableView.startHeaderRefreshing()
     }
 
+}
+
+extension DefaultNoMoreDataController {
+    func makeConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalToSuperview()
+        }
+    }
 }

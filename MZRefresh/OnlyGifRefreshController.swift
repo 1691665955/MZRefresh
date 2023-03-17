@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class OnlyGifRefreshController: UIViewController, UITableViewDataSource {
 
@@ -21,12 +22,12 @@ class OnlyGifRefreshController: UIViewController, UITableViewDataSource {
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: self.view.bounds, style: .plain)
+        let tableView = UITableView()
         tableView.dataSource = self
         tableView.estimatedRowHeight = 50
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        let path = Bundle.main.path(forResource: "bird", ofType: "gif")!
+        let path = Bundle.main.path(forResource: "dog", ofType: "gif")!
         let data = try! Data(contentsOf: URL(fileURLWithPath: path))
         tableView.setRefreshHeader(MZRefreshOnlyGifHeader(gifImage: data, size: 80, refreshOffSet: 80, beginRefresh: {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
@@ -50,7 +51,18 @@ class OnlyGifRefreshController: UIViewController, UITableViewDataSource {
             self.view.backgroundColor = .white
         }
         self.view.addSubview(self.tableView)
+        makeConstraints()
+        
         self.tableView.startHeaderRefreshing()
     }
 
+}
+
+extension OnlyGifRefreshController {
+    func makeConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.left.top.bottom.equalToSuperview()
+            make.right.equalTo(-100)
+        }
+    }
 }

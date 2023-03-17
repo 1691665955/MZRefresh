@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import SnapKit
 
 class NormalRefreshController: UIViewController {
 
     var count: Int = 0
     
     lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: self.view.bounds)
+        let scrollView = UIScrollView()
         scrollView.setRefreshHeader(MZRefreshNormalHeader(beginRefresh: {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) { [weak self] in
                 self?.loadNew(Int.random(in: 2...6))
@@ -36,6 +37,7 @@ class NormalRefreshController: UIViewController {
             self.view.backgroundColor = .white
         }
         self.view.addSubview(scrollView)
+        makeConstraints()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(headerRefresh))
         
@@ -77,6 +79,14 @@ class NormalRefreshController: UIViewController {
         } else {
             self.count += count
             self.scrollView.stopFooterRefreshing()
+        }
+    }
+}
+
+extension NormalRefreshController {
+    func makeConstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalToSuperview()
         }
     }
 }

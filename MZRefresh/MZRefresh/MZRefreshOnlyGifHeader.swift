@@ -119,6 +119,26 @@ open class MZRefreshOnlyGifHeader: MZRefreshHeaderComponent {
     }
     
     public func refreshWidthUpdate(_ width: CGFloat) {
+        var frame = self.refreshNormalView.frame
+        frame.size.width = width
+        self.refreshNormalView.frame = frame
+        self.refreshReadyView.frame = frame
+        self.refreshingView.frame = frame
+        for subView in self.refreshNormalView.subviews {
+            var subFrame = subView.frame
+            subFrame.size.width = width
+            subView.frame = subFrame
+        }
+        for subView in self.refreshReadyView.subviews {
+            var subFrame = subView.frame
+            subFrame.size.width = width
+            subView.frame = subFrame
+        }
+        for subView in self.refreshingView.subviews {
+            var subFrame = subView.frame
+            subFrame.size.width = width
+            subView.frame = subFrame
+        }
         self.refreshWidth = width
     }
     

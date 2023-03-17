@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
     
@@ -21,7 +22,7 @@ class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
     }
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: self.view.bounds, style: .plain)
+        let tableView = UITableView()
         tableView.dataSource = self
         tableView.estimatedRowHeight = 50
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
@@ -42,7 +43,7 @@ class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
         }))
         
         // 自定义NoMoreData组件
-        let footer = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 40))
+        let footer = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH - 100, height: 40))
         footer.font = .systemFont(ofSize: 14)
         footer.textAlignment = .center
         footer.textColor = .brown
@@ -63,7 +64,18 @@ class CustomNoMoreDataController: UIViewController, UITableViewDataSource {
             self.view.backgroundColor = .white
         }
         self.view.addSubview(self.tableView)
+        makeConstraints()
+        
         self.tableView.startHeaderRefreshing()
     }
     
+}
+
+extension CustomNoMoreDataController {
+    func makeConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.right.top.bottom.equalToSuperview()
+            make.left.equalTo(100)
+        }
+    }
 }

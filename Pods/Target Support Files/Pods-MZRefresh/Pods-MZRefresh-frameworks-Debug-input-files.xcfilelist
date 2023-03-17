@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-MZRefresh/Pods-MZRefresh-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

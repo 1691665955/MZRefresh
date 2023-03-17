@@ -77,6 +77,12 @@ open class MZRefreshNormalHeader: MZRefreshHeaderComponent {
     }
     
     public func refreshWidthUpdate(_ width: CGFloat) {
+        let offset = width - self.refreshWidth
+        var frame = self.refreshNormalView.frame
+        frame.origin.x += offset * 0.5
+        self.refreshNormalView.frame = frame
+        self.refreshReadyView.frame = frame
+        self.refreshingView.frame = frame
         self.refreshWidth = width
     }
 }

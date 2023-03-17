@@ -21,13 +21,6 @@ public extension UIScrollView {
     /// 添加下拉刷新组件
     /// - Parameter header: 下拉刷新组件
     func setRefreshHeader(_ header: MZRefreshHeaderComponent) {
-        
-        // 处理刷新组件宽度不是全屏的问题
-        let refreshWidth = self.frame.width
-        if refreshWidth != MZRefreshScreenWidth {
-            header.refreshWidthUpdate(refreshWidth)
-        }
-        
         self.removeRefreshHeader()
         addRefreshObserver()
         // 没有设置contentSize也可以滚动
@@ -121,13 +114,6 @@ public extension UIScrollView {
     /// 设置上拉加载组件
     /// - Parameter footer: 上拉加载组件
     func setRefreshFooter(_ footer: MZRefreshFooterComponent) {
-        
-        // 处理刷新组件宽度不是全屏的问题
-        let refreshWidth = self.frame.width
-        if refreshWidth != MZRefreshScreenWidth {
-            footer.refreshWidthUpdate(refreshWidth)
-        }
-        
         self.removeRefreshFooter()
         addRefreshObserver()
         // 没有设置contentSize也可以滚动
@@ -368,6 +354,28 @@ public extension UIScrollView {
                     var refreshFrame = self.footer!.refreshingView.frame
                     refreshFrame.origin.y = size.height
                     self.footer!.refreshingView.frame = refreshFrame
+                    
+                    self.footer?.refreshWidthUpdate(size.width)
+                }
+                
+                if self.header != nil {
+                    self.header?.refreshWidthUpdate(size.width)
+                }
+                
+                if self.noMoreDataFooter != nil {
+                    var frame = self.noMoreDataFooter?.frame
+                    frame?.size.width = size.width
+                    self.noMoreDataFooter?.frame = frame ?? CGRect.zero
+                    
+                    for subView in self.noMoreDataFooter?.subviews ?? [] {
+                        if let label = subView as? UILabel {
+                            if label.text == "no_more_data".localized() {
+                                var labelFrame = label.frame
+                                labelFrame.size.width = size.width
+                                label.frame = labelFrame
+                            }
+                        }
+                    }
                 }
                 
                 if self.noMoreDataFooter != nil {
