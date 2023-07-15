@@ -96,7 +96,7 @@ class MZRefreshNormalFooterContent: UIView {
             self.indicatorView = iconView
         } else {
             let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0, width: 16.0, height: 16.0))
-            imageView.image = UIImage(named: status == .normal ? "up" : "down", in: .current, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+            imageView.image = UIImage(named: status == .normal ? "up" : "down", in: .currentRefresh, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
             imageView.tintColor = color
             imageView.center = CGPoint(x: 15, y: 15)
             animatedView.addSubview(imageView)
