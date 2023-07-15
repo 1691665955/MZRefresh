@@ -14,7 +14,7 @@ extension String {
         value: String? = nil,
         table: String = "Localizable"
     ) -> String {
-        guard let path = Bundle.currentRefresh?.path(forResource: language.rawValue, ofType: "lproj") else {
+        guard let path = Bundle.current?.path(forResource: language.rawValue, ofType: "lproj") else {
             return self
         }
         return Bundle(path: path)?.localizedString(forKey: self, value: value, table: table) ?? self
@@ -40,9 +40,9 @@ public enum Language: String {
 }
 
 extension Bundle {
-    static let currentRefresh: Bundle? = {
-        guard let resourcePath = Bundle(for: MZRefreshNormalHeader.self).resourcePath else { return nil }
-        return Bundle(path: "\(resourcePath)/MZRefresh.bundle") ?? .main
+    static let current: Bundle? = {
+        let containnerBundle = Bundle(for: MZRefreshNormalHeader.self)
+        return Bundle(path: containnerBundle.path(forResource: "MZRefresh", ofType: "bundle")!) ?? .main
     }()
 }
 
