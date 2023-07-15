@@ -26,7 +26,6 @@
 		6A70E7C827910F0D009CDDE4 /* MZRefreshGifFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7C727910F0D009CDDE4 /* MZRefreshGifFooter.swift */; };
 		6A70E7CA27911D63009CDDE4 /* GifRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7C927911D63009CDDE4 /* GifRefreshController.swift */; };
 		6A70E7CC279141C4009CDDE4 /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6A70E7CB279141C3009CDDE4 /* 1.gif */; };
-		6A70E7CF2791635E009CDDE4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A70E7D12791635E009CDDE4 /* Localizable.strings */; };
 		6A70E7D62791650D009CDDE4 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A70E7D52791650D009CDDE4 /* Localized.swift */; };
 		6AB57164278C1C0F0054943C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57163278C1C0F0054943C /* AppDelegate.swift */; };
 		6AB57168278C1C0F0054943C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57167278C1C0F0054943C /* ViewController.swift */; };
@@ -37,8 +36,8 @@
 		6AB5717F278D4F240054943C /* MZRefreshComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5717E278D4F240054943C /* MZRefreshComponent.swift */; };
 		6AB57181278D53040054943C /* MZRefreshNormalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */; };
 		6AB57183278D53380054943C /* MZRefreshNormalFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */; };
-		6AB57185278D5B440054943C /* MZRefresh.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB57184278D5B440054943C /* MZRefresh.xcassets */; };
 		6ACF9FB628C1A17B0075938F /* MZRefreshConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACF9FB528C1A17B0075938F /* MZRefreshConfig.swift */; };
+		716E349D2A6276EF00BF6FD5 /* MZRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 716E349C2A6276EF00BF6FD5 /* MZRefresh.bundle */; };
 		86ADE7D583058A08F8D03405 /* Pods_MZRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,9 +62,6 @@
 		6A70E7C727910F0D009CDDE4 /* MZRefreshGifFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshGifFooter.swift; sourceTree = "<group>"; };
 		6A70E7C927911D63009CDDE4 /* GifRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifRefreshController.swift; sourceTree = "<group>"; };
 		6A70E7CB279141C3009CDDE4 /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
-		6A70E7D02791635E009CDDE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6A70E7D22791637B009CDDE4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		6A70E7D3279163C3009CDDE4 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6A70E7D52791650D009CDDE4 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		6AB57160278C1C0F0054943C /* MZRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MZRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB57163278C1C0F0054943C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +74,8 @@
 		6AB5717E278D4F240054943C /* MZRefreshComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshComponent.swift; sourceTree = "<group>"; };
 		6AB57180278D53040054943C /* MZRefreshNormalHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshNormalHeader.swift; sourceTree = "<group>"; };
 		6AB57182278D53380054943C /* MZRefreshNormalFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshNormalFooter.swift; sourceTree = "<group>"; };
-		6AB57184278D5B440054943C /* MZRefresh.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MZRefresh.xcassets; sourceTree = "<group>"; };
 		6ACF9FB528C1A17B0075938F /* MZRefreshConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZRefreshConfig.swift; sourceTree = "<group>"; };
+		716E349C2A6276EF00BF6FD5 /* MZRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MZRefresh.bundle; sourceTree = "<group>"; };
 		7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MZRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C211690A490EBB798B5CB576 /* Pods-MZRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZRefresh.release.xcconfig"; path = "Target Support Files/Pods-MZRefresh/Pods-MZRefresh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,15 +98,6 @@
 				7AC88C63A635C2E967EFB354 /* Pods_MZRefresh.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6A70E7D4279164CD009CDDE4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6AB57184278D5B440054943C /* MZRefresh.xcassets */,
-				6A70E7D12791635E009CDDE4 /* Localizable.strings */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		6AB57157278C1C0F0054943C = {
@@ -160,7 +147,7 @@
 		6AB5717D278D122B0054943C /* MZRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				6A70E7D4279164CD009CDDE4 /* Resources */,
+				716E349C2A6276EF00BF6FD5 /* MZRefresh.bundle */,
 				6AB5717E278D4F240054943C /* MZRefreshComponent.swift */,
 				6A15FDE4284ED4EC00450FDC /* MZRefreshHeaderComponent.swift */,
 				6A15FDE6284ED56200450FDC /* MZRefreshFooterComponent.swift */,
@@ -249,14 +236,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AB57185278D5B440054943C /* MZRefresh.xcassets in Resources */,
-				6A70E7CF2791635E009CDDE4 /* Localizable.strings in Resources */,
 				6AB57170278C1C160054943C /* LaunchScreen.storyboard in Resources */,
 				6A587CB52792C5A4001053ED /* dog.gif in Resources */,
 				6AB5716D278C1C160054943C /* Assets.xcassets in Resources */,
 				6A587CB72792C888001053ED /* bird.gif in Resources */,
 				6A70E7CC279141C4009CDDE4 /* 1.gif in Resources */,
 				6AB5716B278C1C0F0054943C /* Main.storyboard in Resources */,
+				716E349D2A6276EF00BF6FD5 /* MZRefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,16 +325,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6A70E7D12791635E009CDDE4 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6A70E7D02791635E009CDDE4 /* en */,
-				6A70E7D22791637B009CDDE4 /* zh-Hans */,
-				6A70E7D3279163C3009CDDE4 /* zh-Hant */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		6AB57169278C1C0F0054943C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
