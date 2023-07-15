@@ -138,7 +138,7 @@ class MZRefreshGifFooterContent: UIView {
             self.indicatorView = imageView
         } else {
             let imageView = UIImageView(frame: CGRect(x: 0.0, y: 0, width: 16.0, height: 16.0))
-            imageView.image = UIImage(named: status == .normal ? "up" : "down", in: .current, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+            imageView.image = UIImage(named: status == .normal ? "up" : "down", in: .refreshBundle, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
             imageView.tintColor = .gray
             imageView.center = CGPoint(x: size * 0.5, y: size * 0.5)
             animatedView.addSubview(imageView)
