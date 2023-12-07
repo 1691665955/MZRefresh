@@ -167,10 +167,10 @@ public extension UIScrollView {
         }
     }
     
-    /// 手动下拉刷新
+    /// 手动上拉加载
     /// - Parameter animated: 是否执行动画
     func startFooterRefreshing(animated: Bool = false) {
-        if self.header != nil && self.contentSize.height > 0{
+        if self.footer != nil && self.contentSize.height > 0{
             if animated {
                 self.footer?.currentStatus = .refresh
                 self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.footer?.refreshOffset ?? 0, right: 0)
